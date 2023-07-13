@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>BookBuy</title>
+    <link rel="stylesheet" href="<%= asset_path 'bootstrap.min.css' %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +13,17 @@
   </head>
 
   <body>
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Books', books_path %></li>
+  <li><%= link_to 'Authors', authors_path %></li>
+  <li><%= link_to 'Genres', genres_path %></li>
+  <li><%= link_to 'About', about_path %></li>
+  <li><%= link_to 'Categories', categories_path %></li>
+  <li><%= link_to 'Items', items_path %></li>
+
+
 
     <%= yield %>
+    <script src="<%= asset_path 'bootstrap.min.js' %>"></script>
   </body>
 </html>

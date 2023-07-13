@@ -1,6 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @book %>
+<h1><%= @book.title %></h1>
+
+<p><strong>Description:</strong> <%= @book.description %></p>
+<p><strong>Author:</strong> <%= link_to @book.author.name, author_path(@book.author) %></p>
+<p><strong>Genre:</strong> <%= link_to @book.genre.name, genre_path(@book.genre) %></p>
+<p><strong>Price:</strong> <%= @book.price %></p>
 
 <div>
   <%= link_to "Edit this book", edit_book_path(@book) %> |

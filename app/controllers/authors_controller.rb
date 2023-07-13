@@ -6,6 +6,8 @@ class AuthorsController < ApplicationController
     @authors = Author.all
   end
 
+
+
   # GET /authors/1 or /authors/1.json
   def show
   end
@@ -68,3 +70,12 @@ class AuthorsController < ApplicationController
       params.require(:author).permit(:name, :bio)
     end
 end
+
+def index
+  @authors = if params[:search]
+             author.where('title LIKE ?', "%#{params[:search]}%")
+           else
+             author.all
+           end
+end
+

@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Authors</h1>
+<%= form_tag authors_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Search...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
 
 <div id="authors">
   <% @authors.each do |author| %>
@@ -12,3 +16,5 @@
 </div>
 
 <%= link_to "New author", new_author_path %>
+
+

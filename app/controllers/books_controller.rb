@@ -4,12 +4,23 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
-  end
+end
+
+def index
+  @items = Item.all
+end
+
+def index
+  @books = Book.page(params[:page]).per(10)
+end
+
+
 
   # GET /books/1 or /books/1.json
   def show
     @book = Book.find(params[:id])
   end
+
 
 
   # GET /books/new
@@ -69,4 +80,12 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :description, :author_id, :genre_id, :price)
     end
+  end
+
+  def index
+    @books = if params[:search]
+               Book.where('title LIKE ?', "%#{params[:search]}%")
+             else
+               Book.all
+             end
   end
